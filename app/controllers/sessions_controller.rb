@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       @user = User.find_or_create_by_auth(auth_hash)
       session[:current_user_id] = @user.id
     end
-    redirect_to :root
+    redirect_to user_posts_path(current_user)
   end
 
   def destroy
