@@ -1,10 +1,11 @@
 = form_for @post, url: user_posts_path, html: {multipart: true} do |form|
 
   = form.file_field(:image, accept: 'image/*;capture=camera')
-  %video{autoplay: true}
-  %canvas
-  / %img
-  = form.text_field :content
+  %article
+    %video{autoplay: true}
+    %canvas
+    / %img
+    = form.text_field :content, value: "caption goes here... #selfies"
   / %a.submit Jokes
   = link_to "Jokes", user_posts_url(@post.user),class: "submit"
 
