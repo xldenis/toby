@@ -79,7 +79,7 @@ function sendImage(e){
       processData: false,
     })
     .done(function(){
-      window.location.href = submit.href;
+      window.location = submit.href;
     })
     .fail(function(jq){
       alert("o you failed"+jq.status);
