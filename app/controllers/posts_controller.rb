@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
     respond_to do |format|
       format.html 
       format.json {render json: @post}

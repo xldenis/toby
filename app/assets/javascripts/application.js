@@ -48,7 +48,8 @@ $(function(){
   }
   paused = !paused;
 }
-function sendImage(){
+function sendImage(e){
+  e.preventDefault();
   canvas.toBlob(function(b){
     data = new FormData();
     data.append('post[image]',b,'image');
@@ -68,8 +69,8 @@ function sizeCanvas(){
   setTimeout(function() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-    img.height = video.videoHeight;
-    img.width = video.videoWidth;
+    // img.height = video.videoHeight;
+    // img.width = video.videoWidth;
   }, 100);
 }
 

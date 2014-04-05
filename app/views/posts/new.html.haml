@@ -3,8 +3,9 @@
   %canvas
   / %img
   = form.text_field :content
-  %a.submit Jokes
+  / %a.submit Jokes
+  = link_to "Jokes", user_posts_url(@post.user),class: "submit"
 
-  %audio{src:asset_path('camera_shutter.wav')} 
+  %audio{src:asset_path('camera_shutter.wav')} s
 
   / # = form.submit
