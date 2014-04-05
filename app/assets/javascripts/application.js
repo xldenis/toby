@@ -24,14 +24,18 @@ $(function(){
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
   var paused = false;
-  var audio = document.getElementById("audio");
+  var audio = document.querySelector("audio");
 
 
   function snapshot() {
 
     if(!paused){
      video.pause();
-      audio.play();
+     audio.play();
+     $('video').animate({
+      opacity: .2
+     },75,function(){$('video').animate({opacity:1},75)})
+
      if (localMediaStream) {
       ctx.drawImage(video, 0, 0);
       // "image/webp" works in Chrome.
