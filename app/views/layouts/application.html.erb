@@ -12,7 +12,7 @@
     <% if logged_in? %>
     <%= link_to 'Log out', '/logout' %>
     <% if can? :create, Post %> 
-    <%= link_to 'New Post', user_posts_url(current_user) %>
+    <%= link_to 'New Post', new_user_post_url(current_user) %>
     <% end %>
     <% else %>
     <%= link_to 'Log in', '/auth/facebook' %>
