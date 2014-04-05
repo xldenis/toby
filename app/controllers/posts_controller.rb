@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     @post = @user.posts.new(post_params)
     tags = @post.content.scan /#(\w+)/
     # @post.tags = tags.flatten
-    if @post.save 
+    if @post.save! 
       respond_to do |format| 
         format.html {redirect_to user_posts_url(current_user)}
         format.json {
