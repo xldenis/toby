@@ -28,3 +28,8 @@ form input {
   margin:0;
   border:1px solid
 }
+@media (min-width: 640px) {
+  input[type="file"] {
+    display:none !important;
+  }
+}
