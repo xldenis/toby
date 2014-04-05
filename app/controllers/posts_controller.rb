@@ -28,6 +28,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    tags = @post.content.scan /#(\w+)/
+    @post.tags = tags.flatten
     if @post.save 
       respond_to do |format| 
         format.html {redirect_to user_posts_url(current_user)}
@@ -38,10 +40,8 @@ class PostsController < ApplicationController
     else
       puts @post.inspect
       respond_to do |format|
-      format.html {redirect_to :back}
-        format.json {
-          render status: 500
-        }
+        format.html {redirect_to :back}
+        format.json { render json: nil, status: 500}
       end
     end
   end
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     else 
       flash[:error] = "Wooops that post wasn't deleted."
     end
-        respond_to do |format|
+    respond_to do |format|
       format.html {redirect_to :root}
       format.json {render json: true}
     end    

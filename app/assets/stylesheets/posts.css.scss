@@ -2,9 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 article {
-  width: 600px;
+  // width: 600px;
+  // height: 450px;
+  max-width: 650px;
+  max-height: 500px;
+  min-height: 400px;
   margin: 2rem auto;
   background: #999;
+  position: relative;
 }
 article img {
   display: block;
@@ -21,10 +26,37 @@ form {
   width: 640px;
   margin:auto
 }
+
+
+input[type="file"] {
+  display:none;
+}
+
+article > figcaption,article >input {
+  height: 3rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(50,50,50,.8);
+  color: #ddd;  
+  padding:.5rem 1rem;
+  box-sizing: border-box;
+}
 form input {
   width: 100%;
   font-size:2rem;
   padding:0;
   margin:0;
-  border:1px solid
+  border:0;
+  background: #ddd;
+  color: #222;
+}
+
+@media only screen and (max-device-width: 480px) {
+  input[type="file"] {
+    display:block !important;
+  }
+  video {
+    display:none !important;
+  }
 }
