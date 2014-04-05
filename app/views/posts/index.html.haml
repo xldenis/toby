@@ -1,2 +1,4 @@
+- if logged_in?
+  = link_to "New Post", new_user_post_url(current_user)
 - @posts.each do |post|
   = render partial: 'post', locals: {post: post}
