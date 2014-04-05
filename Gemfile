@@ -38,6 +38,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 gem 'sqlite3', group: [:development, :test]
