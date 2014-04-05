@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
 var ready = function(){
 
   var video = $('video')[0];
@@ -102,7 +104,7 @@ function sizeCanvas(){
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
-/*
+
 function doRekog(imgdata) {
   console.log("doRekog");
 
@@ -146,4 +148,6 @@ function doRekog(imgdata) {
       $("#statusText").html(result);
     }
   });
-}*/
+
+}
+

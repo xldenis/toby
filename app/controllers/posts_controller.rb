@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save 
       respond_to do |format| 
-        format.html {redirect_to user_post_url(current_user,@post)}
+        format.html {redirect_to user_posts_url(current_user)}
         format.json {
           render json: [user_post_url(current_user,@post)]
         }
