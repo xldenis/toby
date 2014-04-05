@@ -38,6 +38,7 @@ GEM
     arel (4.0.2)
     atomic (1.1.16)
     builder (3.1.4)
+    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -155,6 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   coffee-rails (~> 4.0.0)
   haml
   high_voltage

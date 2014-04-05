@@ -1,21 +1,13 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authorize, only: [:new,:create,:update,:edit,:destroy]
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
     @post = Post.find(params[:id])
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    @post.update_attributes!(post_params)
-    redirect_to @post
   end
 
   def new
