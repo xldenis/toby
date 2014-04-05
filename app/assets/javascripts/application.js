@@ -78,7 +78,7 @@ function sendImage(e){
       type: 'POST',
       dataType: 'json',
       data: data,
-      processData: false,
+      processData: false
     })
     .done(function(){
       window.location = submit.href;
