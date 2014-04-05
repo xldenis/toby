@@ -35,6 +35,14 @@ class PostsController < ApplicationController
           render json: user_post_url(current_user,@post)
         }
       end
+    else
+      puts @post.inspect
+      respond_to do |format|
+      format.html {redirect_to :back}
+        format.json {
+          render status: 500
+        }
+      end
     end
   end
 

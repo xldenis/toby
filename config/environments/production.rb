@@ -35,6 +35,9 @@ Toby::Application.configure do
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
+  config.s3_credentials = { bucket: 'tobyapp-prod', access_key_id: ENV['TOBY_S3_ID'], secret_access_key: ENV['TOBY_S3_SECRET']}
+
+
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx

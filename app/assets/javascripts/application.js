@@ -19,35 +19,44 @@
 $(function(){
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas');
-  var img = document.querySelector('img');
-  var target = document.querySelector('#post_image');
+  // var img = document.querySelector('img');
+  var submit = document.querySelector('.submit');
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
+  var paused = false;
 
   function snapshot() {
-    if (localMediaStream) {
+    if(!paused){
+     video.pause();
+     if (localMediaStream) {
       ctx.drawImage(video, 0, 0);
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
-      document.querySelector('img').src = canvas.toDataURL('image/webp');
-      canvas.toBlob(function(b){
-        data = new FormData();
-        data.append('post[image]',b,'image');
-        // data.append('post[content]',$('#post_content')[0].value);
-        data.append('post[content]',"lololol");
-        $.ajax({
-          url: $('form').attr('action'),
-          contentType: false,
-          type: 'POST',
-          dataType: 'json',
-          data: data,
-          processData: false
-        });
-
-      },'image/png');
+      // document.querySelector('img').src = canvas.toDataURL('image/webp');
     }
+
+  }else{
+    video.play();
   }
-  function sizeCanvas(){
+  paused = !paused;
+}
+function sendImage(){
+  canvas.toBlob(function(b){
+    data = new FormData();
+    data.append('post[image]',b,'image');
+    data.append('post[content]',$('#post_content')[0].value);
+    $.ajax({
+      url: $('form').attr('action'),
+      contentType: false,
+      type: 'POST',
+      dataType: 'json',
+      data: data,
+      processData: false
+    });
+  },'image/png');
+}
+
+function sizeCanvas(){
   setTimeout(function() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -55,18 +64,21 @@ $(function(){
     img.width = video.videoWidth;
   }, 100);
 }
-  video.addEventListener('click', snapshot, false);
 
-  // Not showing vendor prefixes or code that works cross-browser.
-  navigator.webkitGetUserMedia({video: true}, function(stream) {
-    video.src = window.URL.createObjectURL(stream);
-    sizeCanvas();
-    localMediaStream = stream;
-  }, function(){});
+video.addEventListener('click', snapshot, false);
+submit.addEventListener('click',sendImage,false);
+
+// Not showing vendor prefixes or code that works cross-browser.
+navigator.webkitGetUserMedia({video: true}, function(stream) {
+  video.src = window.URL.createObjectURL(stream);
+  sizeCanvas();
+  localMediaStream = stream;
+}, function(){});
+
 });
 function doRekog(imgdata) {
   console.log("doRekog");
-  
+
   // Init data
   var formData = new FormData(document.forms[0]);
   formData.append("uploaded_file",imgdata);

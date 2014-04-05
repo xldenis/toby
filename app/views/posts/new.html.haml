@@ -1,6 +1,7 @@
 = form_for @post, url: user_posts_path, html: {multipart: true} do |form|
   %video{autoplay: true}
   %canvas
-  %img
+  / %img
   = form.text_field :content
-  = form.submit
+  %a.submit Jokes
+  / # = form.submit
