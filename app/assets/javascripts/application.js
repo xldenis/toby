@@ -70,7 +70,12 @@ function sendImage(e){
       data: data,
       processData: false
     })
-    .done(function(){window.location = submit.href;})
+    .done(function(){
+      var result = doRekog(b);
+      
+      window.location = submit.href;
+
+    })
     .fail(function(jq){alert("o you failed"+jq.status);});
   },'image/png');
 }
