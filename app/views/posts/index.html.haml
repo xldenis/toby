@@ -1,3 +1,2 @@
 - @posts.each do |post|
-  = render partial: 'post'
-  
+  = render partial: 'post', locals: {post: post}

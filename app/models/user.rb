@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+    has_many :posts
     def self.find_or_create_by_auth(auth_hash)
     @user = User.where(identifier: auth_hash["uid"], provider: auth_hash["provider"]).first
 
