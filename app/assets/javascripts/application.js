@@ -70,21 +70,15 @@ function sendImage(e){
       data: data,
       processData: false
     })
-    .done(function(){
-      window.location = submit.href;
-    })
-    .fail(function(jq){
-      alert("o you failed"+jq.status);
-    });
+    .done(function(){window.location = submit.href;})
+    .fail(function(jq){alert("o you failed"+jq.status);});
   },'image/png');
 }
 
 function sizeCanvas(){
   setTimeout(function() {
     canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    // img.height = video.videoHeight;
-    // img.width = video.videoWidth;
+    canvas.height = video.videoHeight; 
   }, 100);
 }
 
