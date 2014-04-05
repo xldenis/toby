@@ -1,6 +1,12 @@
 
 //
 //= require jquery
+
+
+//= require canvastoblog.min
+//= require ccv
+//= require face
+//= require jquery.facedetection
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
@@ -56,10 +62,13 @@ var ready = function(){
 }
 function sendImage(e){
   e.preventDefault();
-  // var coords = $('img')[0].faceDetection();
-  // if(coords.length <= 0){
-  //   alert('yur dummmmmmm');
-  // }
+  var coords = $('img').first().faceDetection()[0];
+  if(coords == null){
+    console.log("test");
+    alert('yur dummmmmmm');
+    return;
+  }
+  console.log("untest");
   canvas.toBlob(function(b){
     data = new FormData();
     if ($('#post_image')[0].value != "") {

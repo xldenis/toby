@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			options.error($$, 1, 'This is not an image.');
 			options.complete($$, []);
 			return [];
-		}
+		}  
 
 		function resizeCanvas(image, canvas) {
 			canvas.width = image.offsetWidth;
@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		}
 		
 		// Grayscale function by Liu Liu
-		function grayscale(image) {
+		function grayscale(image) {  
 			var canvas = document.createElement("canvas");
 			var ctx = canvas.getContext("2d");
 			

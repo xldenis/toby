@@ -18,7 +18,7 @@ article img {
 form canvas {
   display: none;
 }
-form img {display:none !important;}
+form img {visibility:hidden !important;}
 form img, video, canvas {
   width: 640px;
   height: 480px;
