@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 var ready = function(){
-  
+
   var video = $('video')[0];
   var canvas = $('canvas')[0];
   // var img = document.querySelector('img');
@@ -27,17 +27,20 @@ var ready = function(){
   var audio = $('audio')[0];
   $('video').bind('click', snapshot);
   submit.addEventListener('click',sendImage,false);
-  navigator.webkitGetUserMedia({video: true}, function(stream) {
+
+  navigator.getUserMedia  = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia ||
+  navigator.msGetUserMedia;
+
+  navigator.getUserMedia({video: true}, function(stream) {
     video.src = window.URL.createObjectURL(stream);
     sizeCanvas();
     localMediaStream = stream;
   }, function(){});
 
 
-  navigator.getUserMedia  = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia ||
-  navigator.msGetUserMedia;
+
 
 
   function snapshot() {
@@ -76,7 +79,7 @@ function sendImage(e){
       processData: false,
     })
     .done(function(){
-      window.location.href = submit.href;
+      window.location = submit.href;
     })
     .fail(function(jq){
       alert("o you failed"+jq.status);

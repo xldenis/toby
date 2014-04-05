@@ -7,5 +7,5 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates_presence_of :content
-  validates_attachment_presence :image
+  validates :image, attachment_presence: true
 end
