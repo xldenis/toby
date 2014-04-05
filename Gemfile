@@ -24,6 +24,8 @@ gem 'omniauth-facebook'
 
 gem 'high_voltage'
 
+gem 'paperclip',github: 'thoughtbot/paperclip'
+
 gem 'haml'
 # Use jquery as the JavaScript library
 
