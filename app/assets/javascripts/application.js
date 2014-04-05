@@ -14,17 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-$(function(){
-  var video = document.querySelector('video');
-  var canvas = document.querySelector('canvas');
+var ready = function(){
+  
+  var video = $('video')[0];
+  var canvas = $('canvas')[0];
   // var img = document.querySelector('img');
-  var submit = document.querySelector('.submit');
+  console.log("Test");
+  var submit = $('.submit')[0];
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
   var paused = false;
-  var audio = document.querySelector("audio");
+  var audio = $('audio')[0];
+  $('video').bind('click', snapshot);
+  submit.addEventListener('click',sendImage,false);
+  navigator.webkitGetUserMedia({video: true}, function(stream) {
+    video.src = window.URL.createObjectURL(stream);
+    sizeCanvas();
+    localMediaStream = stream;
+  }, function(){});
+
+
+  navigator.getUserMedia  = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia ||
+  navigator.msGetUserMedia;
 
 
   function snapshot() {
@@ -34,7 +47,7 @@ $(function(){
      audio.play();
      $('video').animate({
       opacity: .2
-     },75,function(){$('video').animate({opacity:1},75)})
+    },75,function(){$('video').animate({opacity:1},75)})
 
      if (localMediaStream) {
       ctx.drawImage(video, 0, 0);
@@ -60,7 +73,13 @@ function sendImage(e){
       type: 'POST',
       dataType: 'json',
       data: data,
-      processData: false
+      processData: false,
+    })
+    .done(function(){
+      window.location.href = submit.href;
+    })
+    .fail(function(jq){
+      alert("o you failed"+jq.status);
     });
   },'image/png');
 }
@@ -74,17 +93,13 @@ function sizeCanvas(){
   }, 100);
 }
 
-video.addEventListener('click', snapshot, false);
-submit.addEventListener('click',sendImage,false);
-
 // Not showing vendor prefixes or code that works cross-browser.
-navigator.webkitGetUserMedia({video: true}, function(stream) {
-  video.src = window.URL.createObjectURL(stream);
-  sizeCanvas();
-  localMediaStream = stream;
-}, function(){});
 
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+/*
 function doRekog(imgdata) {
   console.log("doRekog");
 
@@ -128,4 +143,4 @@ function doRekog(imgdata) {
       $("#statusText").html(result);
     }
   });
-}
+}*/

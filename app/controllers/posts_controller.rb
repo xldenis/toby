@@ -32,7 +32,7 @@ class PostsController < ApplicationController
       respond_to do |format| 
         format.html {redirect_to user_post_url(current_user,@post)}
         format.json {
-          render json: user_post_url(current_user,@post)
+          render json: [user_post_url(current_user,@post)]
         }
       end
     else
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     end
         respond_to do |format|
       format.html {redirect_to :root}
-      format.json {render status: 200}
+      format.json {render json: true}
     end    
     
   end
