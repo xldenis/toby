@@ -2,6 +2,9 @@
   %video{autoplay: true}
   %canvas
   / %img
+
+  / = form.file_field (:image, accept: 'image/*;capture=camera')
+
   = form.text_field :content
   / %a.submit Jokes
   = link_to "Jokes", user_posts_url(@post.user),class: "submit"
