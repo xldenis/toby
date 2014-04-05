@@ -39,6 +39,9 @@ function hasGetUserMedia() {
 	    	
 	    	pic.src = window.URL.createObjectURL(localMediaStream);
 	    	doRekog(pic);
+	    	var info = doRekog(pic);
+
+	    	console.log(info);
 
 		}, errorCallback);
 	}else{
