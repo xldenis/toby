@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  token: MyString
+  provider: MyString
+  secret: MyString
+  expires_at: 2014-04-04 23:22:01
+  name: MyString
+  identifier: MyString
+
+two:
+  token: MyString
+  provider: MyString
+  secret: MyString
+  expires_at: 2014-04-04 23:22:01
+  name: MyString
+  identifier: MyString
