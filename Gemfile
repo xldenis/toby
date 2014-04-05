@@ -26,8 +26,6 @@ gem 'high_voltage'
 
 gem 'paperclip',github: 'thoughtbot/paperclip'
 
-gem 'pg'
-
 gem 'haml'
 # Use jquery as the JavaScript library
 
@@ -38,10 +36,11 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
-group :development do 
-  gem 'sqlite3'
+group :production do
+  gem 'pg'
 end
+
+gem 'sqlite3', group: [:development, :test]
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
