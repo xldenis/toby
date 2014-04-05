@@ -27,6 +27,12 @@ var ready = function(){
   var audio = $('audio')[0];
   $('video').bind('click', snapshot);
   submit.addEventListener('click',sendImage,false);
+
+  navigator.getUserMedia  = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia ||
+  navigator.msGetUserMedia;
+
   navigator.getUserMedia({video: true}, function(stream) {
     video.src = window.URL.createObjectURL(stream);
     sizeCanvas();
@@ -34,10 +40,7 @@ var ready = function(){
   }, function(){});
 
 
-  navigator.getUserMedia  = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia ||
-  navigator.msGetUserMedia;
+
 
 
   function snapshot() {
