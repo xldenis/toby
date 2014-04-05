@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 var ready = function(){
-  
+
   var video = $('video')[0];
   var canvas = $('canvas')[0];
   // var img = document.querySelector('img');
@@ -27,7 +27,7 @@ var ready = function(){
   var audio = $('audio')[0];
   $('video').bind('click', snapshot);
   submit.addEventListener('click',sendImage,false);
-  navigator.webkitGetUserMedia({video: true}, function(stream) {
+  navigator.getUserMedia({video: true}, function(stream) {
     video.src = window.URL.createObjectURL(stream);
     sizeCanvas();
     localMediaStream = stream;
