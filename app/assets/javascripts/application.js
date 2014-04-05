@@ -62,9 +62,11 @@ var ready = function(){
 }
 function sendImage(e){
   e.preventDefault();
+  if(!video.paused) {snapshot();}
   var coords = $('img').first().faceDetection()[0];
   if(coords == null){
     console.log("test");
+    video.play();
     alert('yur dummmmmmm');
     return;
   }
