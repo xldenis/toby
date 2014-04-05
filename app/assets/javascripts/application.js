@@ -148,9 +148,6 @@ function doRekog(imgdata) {
       $("#statusText").html(result);
     }
   });
-<<<<<<< HEAD
+
 }
 
-=======
-}*/
->>>>>>> 14badc19d927ca66e2db7ae892ae88ff37bc890e
