@@ -36,6 +36,7 @@ nav header {
   text-transform: uppercase;
   font-size: 2rem;
   padding: 0 1rem; 
+  font-weight: 900;
 }
 
 nav a {
