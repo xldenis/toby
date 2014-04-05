@@ -4,7 +4,7 @@
   %article
     %video{autoplay: true}
     %canvas
-    / %img
+    %img
     = form.text_field :content, value: "caption goes here... #selfies"
   / %a.submit Jokes
   = link_to "Jokes", user_posts_url(@post.user),class: "submit"

@@ -6,6 +6,7 @@
 //= require_tree .
 
 
+
 var ready = function(){
 
   var video = $('video')[0];
@@ -18,6 +19,7 @@ var ready = function(){
   var paused = false;
   var audio = $('audio')[0];
   $('video').bind('click', snapshot);
+  $('form').bind('submit',sendImage);
   submit.addEventListener('click',sendImage,false);
 
   navigator.getUserMedia  = navigator.getUserMedia ||
@@ -44,7 +46,7 @@ var ready = function(){
       ctx.drawImage(video, 0, 0);
       // "image/webp" works in Chrome.
       // Other browsers will fall back to image/png.
-      // document.querySelector('img').src = canvas.toDataURL('image/webp');
+      $('img')[0].src = canvas.toDataURL('image/webp');
     }
 
   }else{
@@ -54,6 +56,10 @@ var ready = function(){
 }
 function sendImage(e){
   e.preventDefault();
+  // var coords = $('img')[0].faceDetection();
+  // if(coords.length <= 0){
+  //   alert('yur dummmmmmm');
+  // }
   canvas.toBlob(function(b){
     data = new FormData();
     if ($('#post_image')[0].value != "") {
