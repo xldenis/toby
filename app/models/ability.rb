@@ -8,7 +8,7 @@ class Ability
 
     if user.persisted?
         can :destroy, Post, user_id: user.id 
-        can :create, Post
+        can :create, Post, user_id: user.id
          
     end
   end

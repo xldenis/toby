@@ -27,9 +27,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @user = User.find(params[:user_id])
+    @post = @user.posts.new(post_params)
     tags = @post.content.scan /#(\w+)/
-    @post.tags = tags.flatten
+    # @post.tags = tags.flatten
     if @post.save 
       respond_to do |format| 
         format.html {redirect_to user_posts_url(current_user)}
