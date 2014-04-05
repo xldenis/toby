@@ -1,8 +1,11 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
-  has_attached_file :image
+  has_attached_file :image,
+                    storage: :s3,
+                    s3_credentials: Rails.configuration.s3_credentials
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  validates_presence_of :image, :content
+  validates_presence_of :content
+  validates_attachment_presence :image
 end
