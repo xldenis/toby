@@ -27,6 +27,8 @@ gem 'high_voltage'
 gem 'paperclip',github: 'thoughtbot/paperclip'
 
 gem 'haml'
+
+gem 'cancan'
 # Use jquery as the JavaScript library
 
 gem 'jquery-rails'
