@@ -8,4 +8,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :content
   validates :image, attachment_presence: true
+  scope :any_tags, -> (tags){where('tags && ARRAY[?]', tags)}
+  scope :all_tags, -> (tags){where('tags @> ARRAY[?]', tags)}
+  
 end
