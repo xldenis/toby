@@ -6,7 +6,20 @@
     %canvas
     %img
     = form.text_field :content, value: "caption goes here... #selfies"
-  / %a.submit Jokes
+  / Filter stuff  
+  %table
+    %tr
+      %td
+        button_to "Black&White", :onclick => "blackWhite();"
+      %td
+        button_to "", :onclick => "processSepia();"
+      %td
+        /button_to "Black&White", :onclick => "blackWhite();"
+
+
+    %ul (id: "list_of_filters")
+
+
   = link_to "Jokes", user_posts_url(@post.user),class: "submit"
 
   %audio{src:asset_path('camera_shutter.wav')} s
