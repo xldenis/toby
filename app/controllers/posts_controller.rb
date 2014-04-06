@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authorize, only: [:new,:create,:update,:edit,:destroy]
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc).limit(75)
     respond_to do |format|
       format.html 
       format.json {render json: {user: @post,posts: @posts}}
