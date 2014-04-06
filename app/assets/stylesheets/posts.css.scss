@@ -43,6 +43,14 @@ article > figcaption,article >input {
   padding:.5rem 1rem;
   box-sizing: border-box;
 }
+article > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .0rem .5rem; 
+  background: rgba(50,50,50,.8);
+  color: #bbb;
+}
 form input {
   width: 100%;
   font-size:2rem;
