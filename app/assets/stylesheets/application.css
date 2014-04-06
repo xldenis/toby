@@ -44,6 +44,10 @@ nav header {
   padding: 0 1rem; 
   font-weight: 900;
 }
+nav header a {
+  font-size: 2rem;
+  padding: 0 1rem;
+}
 
 nav a {
   float:right;
